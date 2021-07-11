@@ -99,7 +99,7 @@ def main():
 
     parser = getParser()
     args = parser.parse_args()
-    env = args.env
+    env = "test"
     tags = args.tags
     if len(tags) == 0 :
         openApiTags = getTags()
