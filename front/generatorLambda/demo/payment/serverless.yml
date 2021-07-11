@@ -1,0 +1,358 @@
+custom:
+  output:
+    file: build-output.yml
+functions:
+  authorisationId-get:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/payments/masav/{paymentId}/authorisations/{authorisationId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/zahav/{paymentId}/authorisations/{authorisationId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/fp/{paymentId}/authorisations/{authorisationId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: payment-handler.authorisationId-get
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: authorisationId-get
+  paymentId-delete:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/payments/masav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/zahav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/fp/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/masav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/zahav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/fp/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: payment-handler.paymentId-delete
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: paymentId-delete
+  paymentId-get:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/payments/masav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/zahav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/fp/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/masav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/zahav/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: delete
+        path: /v1.0.8/payments/fp/{paymentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: payment-handler.paymentId-get
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: paymentId-get
+  paymentproduct-post:
+    events:
+    - http:
+        method: post
+        path: /v1.0.8/payments/masav
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-ID: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: post
+        path: /v1.0.8/payments/zahav
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-ID: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: post
+        path: /v1.0.8/payments/fp
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-ID: true
+              PSU-IP-Address_mandatory: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: payment-handler.paymentproduct-post
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: paymentproduct-post
+  status-get:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/payments/masav/{paymentId}/status
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/zahav/{paymentId}/status
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    - http:
+        method: get
+        path: /v1.0.8/payments/fp/{paymentId}/status
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: payment-handler.status-get
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: status-get
+layers:
+  NodeModulesUsagePlan:
+    compatibleRuntimes:
+    - nodejs12.x
+    description: node modules dependencies
+    path: node_modules
+package:
+  exclude:
+  - node_modules/**
+plugins:
+- serverless-offline-direct-lambda
+- serverless-offline
+- serverless-reqvalidator-plugin
+- serverless-stack-output
+- serverless-plugin-scripts
+provider:
+  apiName: payment api gateway
+  deploymentBucket: payment-leumi
+  endpointType: private
+  environment:
+    APPLICATIONS_TABLE: ${REACT_APP_AWS_APPLICATIONS_TABLE}
+    NODE_PATH: /opt/nodejs/node12/node_modules/:/opt/nodejs/node_modules:$LAMBDA_RUNTIME_DIR/node_modules:/opt/:/
+  memorySize: 128
+  name: aws
+  profile: ob-leumi-sbx
+  region: eu-west-1
+  resourcePolicy:
+  - Action: '*'
+    Effect: Allow
+    Principal: '*'
+    Resource: '*'
+  role: ApiRole
+  runtime: nodejs12.x
+  stackName: ${self:service}-${self:provider.stage}
+  stage: dev
+  tags:
+    applications: Open Banking Aws
+    env: dev
+    system: Open Banking Aws
+  timeout: 5
+  vpcEndpointIds: null
+resources:
+- Resources:
+    ApiRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+        - arn:aws:iam::aws:policy/AmazonCognitoPowerUser
+        RoleName: openApiRole
+      Type: AWS::IAM::Role
+    SubLambdaRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        RoleName: usage-plans-invocation-role
+      Type: AWS::IAM::Role
+    onlyHead:
+      Properties:
+        Name: only-head
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: false
+        ValidateRequestParameters: true
+      Type: AWS::ApiGateway::RequestValidator
+service: payment

@@ -1,0 +1,161 @@
+ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/masav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/zahav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/fp {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/{payment-product}/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/masav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/zahav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/fp/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/{payment-product}/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/masav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/zahav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/payments/fp/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    

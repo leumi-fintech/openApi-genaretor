@@ -1,0 +1,22 @@
+{
+    "name": "payment",
+    "dependencies": {
+        "amazon-cognito-identity-js": "^4.3.4",
+        "aws-sdk": "^2.742.0",
+        "axios": "^0.21.1",
+        "config": "^3.3.1",
+        "crypto": "^1.0.1",
+        "jwt-decode": "^3.1.2",
+        "moment": "^2.27.0",
+        "node-forge": "^0.9.1",
+        "serverless-offline-direct-lambda": "^0.0.1",
+        "serverless-reqvalidator-plugin": "^1.0.4",
+        "serverless-stack-output": "^0.2.3",
+        "serverless-plugin-scripts": "^1.0.2",
+        "sinon": "^9.0.2",
+        "swagger-object-validator": "^1.4.0",
+        "uuid": "^8.3.2",
+        "uuid-validate": "0.0.3"
+    },
+    "scripts": {}
+}

@@ -1,0 +1,58 @@
+custom:
+  output:
+    file: build-output.yml
+service: ${SERVICE}
+provider:
+  name: aws
+  endpointType: private
+  resourcePolicy:
+   - Effect: Allow
+     Action: '*'
+     Resource: '*'
+     Principal: '*'
+  vpcEndpointIds : 
+  role: ApiRole
+  runtime: nodejs12.x
+  stage: dev
+  tags:
+    env: ${dev}
+    applications: ${applications}
+    system: ${system}
+  stackName: ${self:service}-${self:provider.stage}
+  apiName: 
+  #TODO: replace with ${region}
+  region: eu-west-1
+  timeout: 5
+  memorySize: 128
+  profile: ${profile}
+  deploymentBucket:
+    name: ${OPEN_BANKING_API_ARTIFACTS_BUCKET}
+  environment:
+    APPLICATIONS_TABLE: ${REACT_APP_AWS_APPLICATIONS_TABLE}
+    NODE_PATH: /opt/nodejs/node12/node_modules/:/opt/nodejs/node_modules:$LAMBDA_RUNTIME_DIR/node_modules:/opt/:/
+  
+
+plugins:
+  - serverless-offline-direct-lambda
+  - serverless-offline
+  - serverless-reqvalidator-plugin
+  - serverless-stack-output
+  - serverless-plugin-scripts
+package:
+  exclude:
+    - node_modules/**
+
+layers:
+  NodeModulesUsagePlan:
+    path: node_modules
+    description: 'node modules dependencies'
+    compatibleRuntimes: # optional, a list of runtimes this layer is compatible with
+      - nodejs12.x
+
+resources:
+  
+
+functions:
+
+
+

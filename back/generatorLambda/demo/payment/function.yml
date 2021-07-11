@@ -1,0 +1,88 @@
+authorisationId-get:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/{payment-service}/{payment-product}/{paymentId}/authorisations/{authorisationId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            PSU-IP-Address_mandatory: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: payment-handler.authorisationId-get
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: authorisationId-get
+paymentId-delete:
+  events:
+  - http:
+      method: delete
+      path: /v1.0.8/{payment-service}/{payment-product}/{paymentId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: payment-handler.paymentId-delete
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: paymentId-delete
+paymentId-get:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/{payment-service}/{payment-product}/{paymentId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: payment-handler.paymentId-get
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: paymentId-get
+paymentproduct-post:
+  events:
+  - http:
+      method: post
+      path: /v1.0.8/{payment-service}/{payment-product}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            PSU-ID: true
+            PSU-IP-Address_mandatory: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: payment-handler.paymentproduct-post
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: paymentproduct-post
+status-get:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/{payment-service}/{payment-product}/{paymentId}/status
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: payment-handler.status-get
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: status-get

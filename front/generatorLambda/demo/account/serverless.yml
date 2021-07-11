@@ -1,0 +1,268 @@
+custom:
+  output:
+    file: build-output.yml
+  scripts:
+    commands:
+      hello: echo Hello from ${self:service} service!
+functions:
+  accountid:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/card-accounts/{account-id}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.accountid
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: accountid
+  accounts:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/accounts
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.accounts
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: accounts
+  authorisationId:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/consents/{consentId}/authorisations/{authorisationId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: account-handler.authorisationId
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: authorisationId
+  balances:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/card-accounts/{account-id}/balances
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.balances
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: balances
+  cardaccounts:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/card-accounts
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.cardaccounts
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: cardaccounts
+  consentId:
+    events:
+    - http:
+        method: delete
+        path: /v1.0.8/consents/{consentId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: account-handler.consentId
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: consentId
+  consents:
+    events:
+    - http:
+        method: post
+        path: /v1.0.8/consents
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              PSU-ID: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: account-handler.consents
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: consents
+  status:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/consents/{consentId}/status
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+    handler: account-handler.status
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: status
+  transactionId:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/accounts/{account-id}/transactions/{transactionId}
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.transactionId
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: transactionId
+  transactions:
+    events:
+    - http:
+        method: get
+        path: /v1.0.8/card-accounts/{account-id}/transactions
+        reqValidatorName: onlyHead
+        request:
+          parameters:
+            headers:
+              Digest: true
+              Signature: true
+              TPP-Signature-Certificate: true
+              X-Request-ID: true
+              consentId_HEADER_mandatory: true
+    handler: account-handler.transactions
+    layers:
+    - Ref: NodeModulesUsagePlanLambdaLayer
+    name: transactions
+layers:
+  NodeModulesUsagePlan:
+    compatibleRuntimes:
+    - nodejs12.x
+    description: node modules dependencies
+    path: node_modules
+package:
+  exclude:
+  - node_modules/**
+plugins:
+- serverless-offline-direct-lambda
+- serverless-offline
+- serverless-reqvalidator-plugin
+- serverless-stack-output
+- serverless-plugin-scripts
+provider:
+  apiName: account api gateway
+  deploymentBucket: account-leumi
+  endpointType: private
+  environment:
+    APPLICATIONS_TABLE: ${REACT_APP_AWS_APPLICATIONS_TABLE}
+    NODE_PATH: /opt/nodejs/node12/node_modules/:/opt/nodejs/node_modules:$LAMBDA_RUNTIME_DIR/node_modules:/opt/:/
+  memorySize: 128
+  name: aws
+  profile: ob-leumi-sbx
+  region: eu-west-1
+  resourcePolicy:
+  - Action: '*'
+    Effect: Allow
+    Principal: '*'
+    Resource: '*'
+  role: ApiRole
+  runtime: nodejs12.x
+  stackName: ${self:service}-${self:provider.stage}
+  stage: dev
+  tags:
+    applications: Open Banking Aws
+    env: dev
+    system: Open Banking Aws
+  timeout: 5
+  vpcEndpointIds: null
+resources:
+- Resources:
+    ApiRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+        - arn:aws:iam::aws:policy/AmazonCognitoPowerUser
+        RoleName: openApiRole
+      Type: AWS::IAM::Role
+    SubLambdaRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        RoleName: usage-plans-invocation-role
+      Type: AWS::IAM::Role
+    onlyHead:
+      Properties:
+        Name: only-head
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: false
+        ValidateRequestParameters: true
+      Type: AWS::ApiGateway::RequestValidator
+service: account

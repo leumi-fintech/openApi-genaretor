@@ -1,0 +1,64 @@
+functions: null
+layers:
+  NodeModulesUsagePlan:
+    compatibleRuntimes:
+    - nodejs12.x
+    description: node modules dependencies
+    path: node_modules
+package:
+  exclude:
+  - node_modules/**
+plugins:
+- serverless-offline-direct-lambda
+- serverless-offline
+provider:
+  apiName: null
+  deploymentBucket:
+    name: ${OPEN_BANKING_API_ARTIFACTS_BUCKET}
+  environment:
+    APPLICATIONS_TABLE: ${REACT_APP_AWS_APPLICATIONS_TABLE}
+    NODE_PATH: /opt/nodejs/node12/node_modules/:/opt/nodejs/node_modules:$LAMBDA_RUNTIME_DIR/node_modules:/opt/:/
+  memorySize: 128
+  name: aws
+  profile: ${profile}
+  region: eu-west-1
+  role: ApiRole
+  runtime: nodejs12.x
+  stackName: ${self:service}
+  stage: dev
+  timeout: 5
+resources:
+- Resources:
+    ApiRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+        - arn:aws:iam::aws:policy/AmazonCognitoPowerUser
+        RoleName: openApiRole
+      Type: AWS::IAM::Role
+    SubLambdaRole:
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+              - lambda.amazonaws.com
+          Version: '2012-10-17'
+        ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        RoleName: usage-plans-invocation-role
+      Type: AWS::IAM::Role
+service: ${SERVICE}

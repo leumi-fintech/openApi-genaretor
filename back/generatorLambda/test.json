@@ -1,0 +1,55 @@
+payment
+./devops/generatorLambda/demo/payment/payment-handler.js
+X-Request-ID
+Digest
+Signature
+TPP-Signature-Certificate
+PSU-ID
+PSU-IP-Address_mandatory
+{'X-Request-ID': True, 'Digest': True, 'Signature': True, 'TPP-Signature-Certificate': True, 'PSU-ID': True, 'PSU-IP-Address_mandatory': True}
+X-Request-ID
+Digest
+Signature
+TPP-Signature-Certificate
+{'X-Request-ID': True, 'Digest': True, 'Signature': True, 'TPP-Signature-Certificate': True}
+X-Request-ID
+Digest
+Signature
+TPP-Signature-Certificate
+{'X-Request-ID': True, 'Digest': True, 'Signature': True, 'TPP-Signature-Certificate': True}
+X-Request-ID
+Digest
+Signature
+TPP-Signature-Certificate
+{'X-Request-ID': True, 'Digest': True, 'Signature': True, 'TPP-Signature-Certificate': True}
+X-Request-ID
+Digest
+Signature
+TPP-Signature-Certificate
+PSU-IP-Address_mandatory
+{'X-Request-ID': True, 'Digest': True, 'Signature': True, 'TPP-Signature-Certificate': True, 'PSU-IP-Address_mandatory': True}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}/authorisations/{authorisationId}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}
+/v1.0.8/{payment-service}/{payment-product}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}/status
+'./devops/generatorLambda/demo/payment/openApi.yaml'
+/v1.0.8/{payment-service}/{payment-product}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}/status
+/v1.0.8/{payment-service}/{payment-product}/{paymentId}/authorisations/{authorisationId}
+{'/v1.0.8/{payment-service}/{payment-product}': {'post': {'paths': ['/v1.0.8/{payment-service}/masav',
+                                                                    '/v1.0.8/{payment-service}/zahav',
+                                                                    '/v1.0.8/{payment-service}/fp']}},
+ '/v1.0.8/{payment-service}/{payment-product}/{paymentId}': {'delete': {'paths': ['/v1.0.8/{payment-service}/masav/{paymentId}',
+                                                                                  '/v1.0.8/{payment-service}/zahav/{paymentId}',
+                                                                                  '/v1.0.8/{payment-service}/fp/{paymentId}']},
+                                                             'get': {'paths': ['/v1.0.8/{payment-service}/masav/{paymentId}',
+                                                                               '/v1.0.8/{payment-service}/zahav/{paymentId}',
+                                                                               '/v1.0.8/{payment-service}/fp/{paymentId}']}},
+ '/v1.0.8/{payment-service}/{payment-product}/{paymentId}/authorisations/{authorisationId}': {'get': {'paths': ['/v1.0.8/{payment-service}/masav/{paymentId}/authorisations/{authorisationId}',
+                                                                                                                '/v1.0.8/{payment-service}/zahav/{paymentId}/authorisations/{authorisationId}',
+                                                                                                                '/v1.0.8/{payment-service}/fp/{paymentId}/authorisations/{authorisationId}']}},
+ '/v1.0.8/{payment-service}/{payment-product}/{paymentId}/status': {'get': {'paths': ['/v1.0.8/{payment-service}/masav/{paymentId}/status',
+                                                                                      '/v1.0.8/{payment-service}/zahav/{paymentId}/status',
+                                                                                      '/v1.0.8/{payment-service}/fp/{paymentId}/status']}}}

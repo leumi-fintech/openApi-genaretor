@@ -1,0 +1,43 @@
+
+resources:
+  - Resources:
+      onlyHead:  
+        Type: "AWS::ApiGateway::RequestValidator"
+        Properties:
+          Name: 'only-head'
+          RestApiId: 
+            Ref: ApiGatewayRestApi
+          ValidateRequestBody: false
+          ValidateRequestParameters: true
+      ApiRole:
+        Type: AWS::IAM::Role
+        Properties:
+          RoleName: openApiRole
+          AssumeRolePolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Principal:
+                  Service:
+                    - lambda.amazonaws.com
+                Action: sts:AssumeRole
+          ManagedPolicyArns:
+            - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+            - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+            - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+            - arn:aws:iam::aws:policy/AmazonCognitoPowerUser
+      SubLambdaRole:
+        Type: AWS::IAM::Role
+        Properties:
+          RoleName: usage-plans-invocation-role
+          AssumeRolePolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Principal:
+                  Service:
+                    - lambda.amazonaws.com
+                Action: sts:AssumeRole
+          ManagedPolicyArns:
+            - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+            - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess

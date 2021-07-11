@@ -1,0 +1,177 @@
+accountid:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/card-accounts/{account-id}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.accountid
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: accountid
+accounts:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/accounts
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.accounts
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: accounts
+authorisationId:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/consents/{consentId}/authorisations/{authorisationId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: account-handler.authorisationId
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: authorisationId
+balances:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/card-accounts/{account-id}/balances
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.balances
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: balances
+cardaccounts:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/card-accounts
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.cardaccounts
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: cardaccounts
+consentId:
+  events:
+  - http:
+      method: delete
+      path: /v1.0.8/consents/{consentId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: account-handler.consentId
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: consentId
+consents:
+  events:
+  - http:
+      method: post
+      path: /v1.0.8/consents
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            PSU-ID: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: account-handler.consents
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: consents
+status:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/consents/{consentId}/status
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+  handler: account-handler.status
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: status
+transactionId:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/accounts/{account-id}/transactions/{transactionId}
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.transactionId
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: transactionId
+transactions:
+  events:
+  - http:
+      method: get
+      path: /v1.0.8/card-accounts/{account-id}/transactions
+      reqValidatorName: onlyHead
+      request:
+        parameters:
+          headers:
+            Digest: true
+            Signature: true
+            TPP-Signature-Certificate: true
+            X-Request-ID: true
+            consentId_HEADER_mandatory: true
+  handler: account-handler.transactions
+  layers:
+  - Ref: NodeModulesUsagePlanLambdaLayer
+  name: transactions
