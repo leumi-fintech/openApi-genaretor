@@ -35,7 +35,7 @@ def createServerlessYaml(env,api):
 
     copytree("./devops/generatorLambda/templates/utils/",folder_path + "/utils")
    
-    template_env_file_path = './devops/generatorLambda/swaggers/open-banking-1.0.8.yml'
+    template_env_file_path = './devops/generatorLambda/swaggers/swgger.yml'
     stream = open(template_env_file_path, 'r')
     #open function file ########### 
     template_create_folder = './devops/generatorLambda/demo/$api'

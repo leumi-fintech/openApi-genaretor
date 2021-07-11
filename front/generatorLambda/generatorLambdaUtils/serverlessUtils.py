@@ -21,7 +21,7 @@ def addResouces(file_path):
         
 def getTags(): 
     tags = []
-    template_env_file_path = './devops/generatorLambda/swaggers/open-banking-1.0.8.yml'
+    template_env_file_path = './devops/generatorLambda/swaggers/swgger.yml'
     with open(template_env_file_path) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
         for key_path in data['paths']:

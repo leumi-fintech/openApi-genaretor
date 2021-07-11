@@ -79,7 +79,7 @@ def changePathParameters(file_path):
 
 
 def addAllPaths(paths,serverless_path,serveless_data) :
-    openApi_path = serverless_path.replace("serverless.yml","openApi.yaml")
+    openApi_path = serverless_path.replace("serverless.yml","swgger.yaml")
     pprint(openApi_path)
     with open(openApi_path, 'r') as yaml_in :
         with open(serverless_path.replace("serverless.yml","openApi.json"), "w") as json_out:
@@ -120,15 +120,8 @@ def defGetallPaths(paths,data,serverless_path) :
                             newPaths = []
                             for enum in enums : 
                                 for newPath in newObj[methodKey]["paths"] : 
-                                    if len(args.rt) !=  0   :
-                                        print (args.rt)
-                                        for rt in args.rt :
-                                            if  newPath.replace("{"+ parametar["name"] + "}", enum).find("/" + rt + "/") != -1  :
-                                                newPaths.append(newPath.replace("{"+ parametar["name"] + "}", enum))
-                                                print(newPath.replace("{"+ parametar["name"] + "}", enum))
-                                                break
-                                    else : 
-                                        newPaths.append(newPath.replace("{"+ parametar["name"] + "}", enum))
+
+                                    newPaths.append(newPath.replace("{"+ parametar["name"] + "}", enum))
                             for p in newPaths :
                                 createNginxConfig(p,folder_path)
                             newObj[methodKey]["paths"] = newPaths

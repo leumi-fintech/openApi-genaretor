@@ -768,15 +768,16 @@ plugins:
 - serverless-stack-output
 - serverless-plugin-scripts
 provider:
-  apiName: payment api gateway
-  deploymentBucket: payment-leumi
+  apiName: null
+  deploymentBucket:
+    name: ${OPEN_BANKING_API_ARTIFACTS_BUCKET}
   endpointType: private
   environment:
     APPLICATIONS_TABLE: ${REACT_APP_AWS_APPLICATIONS_TABLE}
     NODE_PATH: /opt/nodejs/node12/node_modules/:/opt/nodejs/node_modules:$LAMBDA_RUNTIME_DIR/node_modules:/opt/:/
   memorySize: 128
   name: aws
-  profile: ob-test
+  profile: ${profile}
   region: eu-west-1
   resourcePolicy:
   - Action: '*'
@@ -788,9 +789,9 @@ provider:
   stackName: ${self:service}-${self:provider.stage}
   stage: dev
   tags:
-    applications: Open Banking Aws
-    env: dev
-    system: Open Banking Aws
+    applications: ${applications}
+    env: ${dev}
+    system: ${system}
   timeout: 5
   vpcEndpointIds: null
 resources:
@@ -835,4 +836,4 @@ resources:
         ValidateRequestBody: false
         ValidateRequestParameters: true
       Type: AWS::ApiGateway::RequestValidator
-service: payment
+service: ${SERVICE}

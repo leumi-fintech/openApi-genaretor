@@ -1,9 +1,25 @@
-ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
+location ^~ /v1.0.8/payments/{payment-product} {
     #prox pass to APIGateway by http
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/{payment-product} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/{payment-product} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/masav {
@@ -11,7 +27,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/masav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/masav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/zahav {
@@ -19,7 +51,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/zahav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/zahav {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/fp {
@@ -27,7 +75,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/fp {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/fp {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/{payment-product}/{paymentId} {
@@ -35,7 +99,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/masav/{paymentId} {
@@ -43,7 +123,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/zahav/{paymentId} {
@@ -51,7 +147,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/fp/{paymentId} {
@@ -59,7 +171,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/{payment-product}/{paymentId} {
@@ -67,7 +195,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/{payment-product}/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/masav/{paymentId} {
@@ -75,7 +219,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/masav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/zahav/{paymentId} {
@@ -83,7 +243,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/zahav/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/fp/{paymentId} {
@@ -91,7 +267,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/fp/{paymentId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/{payment-product}/{paymentId}/status {
@@ -99,7 +291,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/{payment-product}/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/{payment-product}/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/masav/{paymentId}/status {
@@ -107,7 +315,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/masav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/masav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/zahav/{paymentId}/status {
@@ -115,7 +339,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/zahav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/zahav/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/fp/{paymentId}/status {
@@ -123,7 +363,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/fp/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/fp/{paymentId}/status {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/{payment-product}/{paymentId}/authorisations/{authorisationId} {
@@ -131,7 +387,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/{payment-product}/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/{payment-product}/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/masav/{paymentId}/authorisations/{authorisationId} {
@@ -139,7 +411,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/masav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/masav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/zahav/{paymentId}/authorisations/{authorisationId} {
@@ -147,7 +435,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/zahav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/zahav/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     location ^~ /v1.0.8/payments/fp/{paymentId}/authorisations/{authorisationId} {
@@ -155,7 +459,23 @@ ServiceEndpointlocation ^~ /v1.0.8/payments/{payment-product} {
     proxy_pass_request_headers on;
     proxy_ssl_server_name on;
     proxy_set_header Host $proxy_host;
-    proxy_pass https://m48djof0oi.execute-api.eu-west-1.amazonaws.com/dev;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/bulk-payments/fp/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
+    include /etc/nginx/proxy-set-header.conf;
+    }
+    location ^~ /v1.0.8/periodic-payments/fp/{paymentId}/authorisations/{authorisationId} {
+    #prox pass to APIGateway by http
+    proxy_pass_request_headers on;
+    proxy_ssl_server_name on;
+    proxy_set_header Host $proxy_host;
+    proxy_pass $uri;
     include /etc/nginx/proxy-set-header.conf;
     }
     

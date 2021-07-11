@@ -9,7 +9,7 @@ from ruamel.yaml import YAML
 import re
 
 def addResouces(file_path):
-    with open('./devops/generatorLambda/templates/resources.yml') as fp:
+    with open('./templates/resources.yml') as fp:
         resources_yml_data = yaml.safe_load(fp)
     with open(file_path) as fp:
         serverless_yml_data = yaml.safe_load(fp)
@@ -21,13 +21,14 @@ def addResouces(file_path):
         
 def getTags(): 
     tags = []
-    template_env_file_path = './devops/generatorLambda/swaggers/open-banking-1.0.8.yml'
+    template_env_file_path = 'swaggers/swgger.yaml'
     with open(template_env_file_path) as f:
         data = yaml.load(f, Loader=yaml.FullLoader)
         for key_path in data['paths']:
             for key_name_api in data['paths'][key_path]:
                 tag = data['paths'][key_path][key_name_api]["tags"]
                 tags.append(tag[0])
+                print(tag)
     return tags
 
 def getRequiredHeaders(data,key_path):

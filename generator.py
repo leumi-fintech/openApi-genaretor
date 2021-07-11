@@ -28,23 +28,23 @@ def createServerlessYaml(env,api):
     folderName = api.lower()
     folderName = re.sub("\s+\S+","",folderName)
     print(folderName)
-    folder_path=Template('./devops/generatorLambda/demo/$api').substitute(api=folderName)
+    folder_path=Template('./demo/$api').substitute(api=folderName)
     # delete old folders 
     rmtree(folder_path,ignore_errors=True)
     # copy utils folder to the new folder 
 
-    copytree("./devops/generatorLambda/templates/utils/",folder_path + "/utils")
+    copytree("./templates/utils/",folder_path + "/utils")
    
-    template_env_file_path = './devops/generatorLambda/swaggers/open-banking-1.0.8.yml'
+    template_env_file_path = './swaggers/swgger.yml'
     stream = open(template_env_file_path, 'r')
     #open function file ########### 
-    template_create_folder = './devops/generatorLambda/demo/$api'
+    template_create_folder = './demo/$api'
     create_folder = Template(template_create_folder).substitute(api=folderName)
     Path(create_folder).mkdir(parents=True, exist_ok=True)
     template_file_path = folder_path+'/serverless.$env.yml'
     file_path = Template(template_file_path).substitute(env=env,api=folderName)
      # copy openApi file 
-    copyfile('./devops/generatorLambda/templates/serverless.yml', file_path)
+    copyfile('./templates/serverless.yml', file_path)
     copyfile(template_env_file_path,folder_path+"/openApi.yaml")
     addResouces(file_path)
     createFunctionYml(folder_path)
@@ -84,7 +84,7 @@ def createServerlessYaml(env,api):
     fullPaths = changePathParameters(file_path.replace(f".{env}",""))
     createFullServelrssYmal(file_path.replace(f".{env}",""),fullPaths,folder_path)
     createFullServelrssYmal(file_path,fullPaths,folder_path)
-    copyfile("./devops/generatorLambda/templates/package.json",folder_path  +"/package.json" )
+    copyfile("./templates/package.json",folder_path  +"/package.json" )
     formatPackageJson(folder_path,folderName)
     # install npm packageses 
     npmInstall(folder_path)
