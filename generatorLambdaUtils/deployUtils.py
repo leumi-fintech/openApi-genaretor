@@ -15,7 +15,7 @@ import jsonref
 import copy
 from generatorLambdaUtils.nginxUtils import createNginxConfig
 from generatorLambdaUtils.cliUtils import getParser
-
+import uuid
 def npmInstall(folder_path):
     os.system(f"cd {folder_path} ; npm i  ")
     os.system("cd ..")
@@ -135,7 +135,7 @@ def defGetallPaths(paths,data,serverless_path) :
         pathsobj[key_path] = newObj
     return pathsobj
                 
-def createFullServelrssYmal(filepath,paths,folder_path):
+def createFullServelrssYmal(filepath,paths,folder_path,uuidV4):
     
     with open(filepath) as f :
         data = yaml.load(f, Loader=yaml.FullLoader)
@@ -167,7 +167,7 @@ def createFullServelrssYmal(filepath,paths,folder_path):
             # newEvents.append(eventss)
         
         # pprint
-    
+    newData["provider"]["stackName"] =  data["provider"]["stackName"] + uuidV4
     with open(filepath, 'w') as f :
         yaml.dump(newData,f)
 

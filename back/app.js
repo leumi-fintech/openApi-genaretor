@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
       cb(null, './generatorLambda/swaggers/')
     },
     filename: function (req, file, cb) {
-      cb(null, 'swgger.yml');
+      cb(null, './generatorLambda/swaggers/swgger.yml');
     }
   })
    

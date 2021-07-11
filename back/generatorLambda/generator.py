@@ -11,7 +11,7 @@ import re
 import argparse
 from generatorLambdaUtils.cliUtils import getParser
 import copy
-
+import uuid
 from generatorLambdaUtils.deployUtils import npmInstall,prepareServelessYaml,slsDeploy
 from generatorLambdaUtils.functionUtils import createFunction,appandFunctions,createFunctionYml,addRequiredHeaders
 from generatorLambdaUtils.deployUtils import npmInstall,prepareServelessYaml,slsDeploy,changePathParameters,createFullServelrssYmal
@@ -24,7 +24,7 @@ from generatorLambdaUtils.nginxUtils import createNginxConfig,addUri
 #TODO: add body schema validation
 #FIXME: serveless dosent support all path events !! 
 
-def createServerlessYaml(env,api):
+def createServerlessYaml(env,api,uuidV4):
     folderName = api.lower()
     folderName = re.sub("\s+\S+","",folderName)
     print(folderName)
@@ -95,6 +95,8 @@ def createServerlessYaml(env,api):
 
 
 def main():
+    uuidV4 = uuid.uuid4().hex
+
     parser = getParser()
     args = parser.parse_args()
     env = args.env
@@ -105,11 +107,11 @@ def main():
         print(tags)
         for tag in tags :
             api = tag 
-            createServerlessYaml(env,api)
+            createServerlessYaml(env,api,uuidV4)
         
     else : 
         for tag in tags :
-            createServerlessYaml(env,tag)
+            createServerlessYaml(env,tag,uuidV4)
 
 
 
